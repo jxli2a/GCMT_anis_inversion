@@ -5,7 +5,7 @@ addpath(genpath(fullfile(pwd,'MyClass')));
 data_dir = fullfile(pwd,'Data','GCMT','evts_all_final');
 earth_model_path = fullfile(pwd,'/Data/earth_model');
 earth_model = csvread(fullfile(earth_model_path,'PREM_1s.csv'));
-%%
+%% inversion
 cmt_list = cell(1, 8);
 for i = 1:8
     name = ['tonga', num2str(i)];
@@ -15,7 +15,9 @@ for i = 1:8
     cmt_list{i} = cmt;
     cmt.show;
 end
-%%
+%% show misfit
+cmt_list{1}.show_misfit;
+%% show slab, earthquake, and tti symmetry axis
 colors = distinguishable_colors(8);
 slab = Slab1998('tonga');
 fig_slab = slab.show;
